@@ -1,3 +1,7 @@
+<?php
+  include "services/SessionMessageService.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,19 @@
   <p>Formulário para inscrição de competidores</p>
   
   <form action="script.php" method="post">
+    <?php
+      $errorMessage = getErrorMessage();
+      $successMessage = getSuccessMessage();
+
+      if(!empty($successMessage))
+      {
+        echo $successMessage;
+      }
+      if(!empty($errorMessage))
+      {
+        echo $errorMessage;
+      }
+    ?>
     <p>Your name: <input type="text" name="name"></p>
     <p>Your age: <input type="text" name="age"></p>
     <p><input type="submit" value="Enviar Dados"></p>
